@@ -1,0 +1,19 @@
+<%
+    iframeUid = "responsive-iframe-" + Math.floor(Math.random() * 100000000);
+%>
+<div>
+    <a href="<%= path %>/<%= vocab_dir %>/index.html?v=<%= version %>" id="<%= iframeUid %>" data-static-iframe-height="800">iFrame</a>
+</div>
+<%
+if (!scaffoldLite) {
+%>
+    <style>
+    <%= include("../scss/news_special/loading.css") %>
+    </style>
+<%
+}
+%>
+<script type="text/javascript">
+    document.body.className+= ' full-width-mode';
+    <%= include(debug === 'true' ? "../js/lib/news_special/iframemanager__host.js" : "../../tmp/iframemanager__host.js", {iframeUid: iframeUid, scaffoldLite: scaffoldLite}) %>
+</script>

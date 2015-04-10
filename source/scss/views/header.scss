@@ -1,0 +1,118 @@
+.map-header {
+    position: absolute;
+    height: $header-mobile-height;
+    top: 0;
+    width: 100%;
+
+    .select {
+        margin: 5px;
+    }
+
+    .phantom & {
+        height: 0;
+        display: none;
+        overflow: hidden;
+    }
+}
+
+.map-header-constituency {
+    padding: 5px;
+    background: #88c2c2;
+    clear: both;
+}
+
+.map-header-from {
+    overflow: hidden;
+    padding: 10px 0;
+
+    .label {
+        float: left;
+        margin: 0 12px 0 0;
+        line-height: 37px;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: left;
+    }
+
+    li {
+        margin: 0;
+        float: left;
+    }
+
+    a {
+        padding: 10px 12px;
+        display: inline-block;
+        color: $color-from-text;
+        background-color: $color-from-bg;
+    }
+
+    .current a {
+        color: $color-from-selected-text;
+        background-color: $color-from-selected-bg;
+    }
+
+    .longer {
+        display: none;
+    }
+}
+
+.map-header-party {
+    float: left;
+    width: 100%;
+    margin: 5px 0 5px 10px;
+
+    .label {
+        float: left;
+    }
+
+    .select {
+        float: left;
+        margin-top: 10px;
+        min-width: 6em;
+    }
+}
+
+@include respondMinMax(768px, false)  {
+    .map-header {
+        height: $header-tablet-height;
+        background: #FFF;
+
+        .select {
+            margin: 12px 10px;
+        }
+    }
+
+    .map-header-from {
+        float: left;
+        display: block;
+
+        .longer {
+            display: inline;
+        }
+    }
+
+    .map-header-party {
+        margin-top: 8px;
+        width: 40%;
+
+        .label {
+            line-height: 16px;
+        }
+
+        .select {
+            margin-top: 5px;
+        }
+    }
+
+    .map-header-constituency {
+        float: right;
+        width: 35%;
+        background: none;
+        padding: 0;
+        clear: none;
+    }
+}

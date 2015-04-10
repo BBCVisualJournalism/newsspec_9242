@@ -1,0 +1,17 @@
+<% if (showFrom) { %>
+<div class="map-header-from">
+  <p class="label">Show data from</p>
+
+  <ul>
+    <li class="from-polling<% if (currentFrom === 'polling') { %> current<% } %>"><a href="#" data-from="polling">Polling</a></li>
+    <li class="from-2010<% if (currentFrom === '2010') { %> current<% } %>"><a href="#" data-from="2010">2010 <span class="longer">general election</span></a></li>
+  </ul>
+</div>
+<% } else { %>
+<div class="map-header-party">
+  <p class="label">Select a party</p>
+</div>
+<% } %>
+
+<div class="map-header-constituency">
+</div>

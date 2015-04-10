@@ -1,0 +1,135 @@
+.map-container {
+    transform-origin: 0 0;
+    transition: 0.5s;
+    background: $color-map-bg;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: $header-mobile-height;
+    bottom: $key-mobile-height;
+    overflow: hidden;
+
+    .phantom & {
+        top: 0;
+        bottom: 0;
+        margin-bottom: 0;
+        height: 100%;
+    }
+}
+
+@include respondMinMax(321px, false) {
+    .map-container {
+        bottom: 0;
+    }
+}
+
+@include respondMinMax(768px, false)  {
+    .map-container {
+        top: $header-tablet-height;
+        bottom: $key-tablet-height;
+    }
+}
+
+.constituency {
+    stroke: $color-constituency;
+    stroke-width: 0.05;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition-property: fill, background, stroke-width;
+    transition-duration: 0.5s, 0.5s, 0.5s;
+    cursor: pointer;
+
+    &.no-id {
+        opacity: 0.5;
+    }
+
+    &.centered {
+        stroke: darken($color-constituency, 80%);
+        stroke-width: 0.075;
+    }
+
+    .phantom & {
+        transition-duration: 0, 0, 0;
+    }
+
+    &.no-data {
+        cursor: default;
+    }
+
+    .zoom-2 & {
+        stroke-width: 0.45px;
+    }
+
+    .zoom-3 & {
+        stroke-width: 0.35px;
+    }
+
+    .zoom-4 & {
+        stroke-width: 0.25px
+    }
+
+    .zoom-5 & {
+        stroke-width: 0.15px
+    }
+
+    .zoom-6 & {
+        stroke-width: 0.1px
+    }
+}
+
+.shetland--pullout {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+
+    path {
+        fill: #FFF;
+    }
+}
+
+.shetland-pullout--box {
+    stroke: #333;
+    stroke-width: 1;
+    fill: #bacbdc;
+}
+
+
+.locator-map--container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    fill: #bacbdc;
+    z-index: 1;
+
+    path {
+        stroke-width: 0.01;
+        fill: #FFF;
+    }
+
+    .locator-box {
+        stroke: #000;
+        stroke-width: 0.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+
+
+.map-tooltip {
+    position: absolute;
+    background: #FFF;
+    color: #000;
+    padding: 5px;
+    z-index: 1;
+    border: 1px solid #000;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+
+    &.no-data {
+        opacity: 0.5;
+    }
+}

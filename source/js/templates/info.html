@@ -1,0 +1,39 @@
+<% if (typeof ashcroft !== 'undefined') { %>
+<h3 class="map-info-name"><%= name %></h3>
+
+<% if (hold_or_not) {%>
+<p class="hold_or_not"><%= hold_or_not %></p>
+<% } %>
+
+<div class="map-results">
+  <div class="map-info-results">
+    <h4><%= type %>, <%= date %></h4>
+
+    <ol>
+      <% _.forEach(ashcroft, function (party) {%>
+      <% if (party.percent){ %>
+      <li><span class="map-info-party-name"><%= party.short_name %></span><span class="map-info-result-bar-outer"><span class="<%= party.name %> map-info-results-bar" style="width: <%= parseInt(party.percent, 10) %>%;"></span></span><strong><%= party.percent %>%</strong></li>
+      <% } %>
+      <% }); %>
+    </ol>
+  </div>
+
+  <div class="map-info-results last">
+    <h4>2010 election results</h4>
+
+    <ol>
+      <% _.forEach(results2010, function (party) {%>
+      <% if (party.percent) { %>
+      <li><span class="map-info-party-name"><%= party.short_name %></span><span class="map-info-result-bar-outer"><span class="<%= party.name %> map-info-results-bar" style="width: <%= parseInt(party.percent, 10) %>%;"></span></span><strong><%= party.percent %>%</strong></li>
+      <% } %>
+      <% }); %>
+    </ol>
+  </div>
+</div>
+
+<p class="map-info-notes"><%= notes %></p>
+<% } else { %>
+<p>This interactive map shows constituency polling and by elections over the last year, compared with the 2010 general election results.</p>
+<p>Choose “show data” for an overview.</p>
+<p>Select a constituency to see the details.</p>
+<% } %>

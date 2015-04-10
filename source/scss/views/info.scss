@@ -1,0 +1,135 @@
+.map-info {
+    position: absolute;
+    padding: 5px;
+    width: 100%;
+    bottom: 0;
+    background: #FFF;
+    z-index: 2;
+
+    .phantom & {
+        height: 0;
+        display: none;
+        overflow: hidden;
+    }
+}
+
+.hold_or_not {
+    margin: 0 0 5px;
+    line-height: 21px;
+}
+
+.map-info-name {
+    display: none;
+}
+
+.map-info-notes {
+    clear: both;
+    margin: 0;
+}
+
+.map-info-results {
+    float: left;
+    width: 50%;
+    margin-bottom: 10px;
+    border-right: 1px solid #cecece;
+    padding: 0 5px 0 0;
+
+    &.last {
+        padding: 0 0 0 5px;
+        border-right: none;
+    }
+
+    h4 {
+        margin: 0 0 15px;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    ol {
+        position: relative;
+        margin-right: 50px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    li {
+        margin-right: 40px;
+        text-align: right;
+    }
+
+    .map-info-result-bar-outer {
+        position: absolute;
+        left: 3em;
+        right: 50px;
+        height: 20px;
+    }
+
+    .map-info-results-bar {
+        float: left;
+        margin-top: 0.33em;
+        height: 8px;
+        text-align: right;
+        transition: width 0.25s ease-in-out;
+
+        .anim-start & {
+            width: 0 !important;
+        }
+    }
+
+    strong {
+        margin-right: -40px;
+        font-weight: normal;
+    }
+}
+
+.map-info-party-name {
+    float: left;
+    width: 3em;
+    text-align: left;
+}
+
+@include respondMinMax(414px, false) {
+    .map-info {
+        right: 0;
+        width: 55%;
+        top: $header-mobile-height;
+        bottom: 0;
+    }
+
+    .hold_or_not {
+        margin: 0 0 10px 0;
+    }
+}
+
+@include respondMinMax(768px, false)  {
+    .map-info {
+        right: 0;
+        width: 25%;
+        top: $header-tablet-height;
+        bottom: 0;
+        padding: 0 20px;
+        border-bottom: none;
+
+        &.is-hidden {
+            display: block;
+        }
+    }
+
+    .map-info-name {
+        display: block;
+    }
+
+    .map-info-results {
+        float: none;
+        width: auto;
+        padding: 20px 0;
+        border-right: none;
+        border-bottom: 2px solid #cecece;
+
+        &:last-child {
+            padding-bottom: 20px;
+        }
+    }
+}

@@ -1,0 +1,138 @@
+.map-key {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: $key-mobile-height;
+    z-index: 1;
+    background: #FFF;
+
+    .constituancy-selected & {
+        display: none;
+    }
+
+    .phantom & {
+        height: 0;
+        display: none;
+        overflow: hidden;
+    }
+}
+
+.key-squares {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 14px;
+    overflow: hidden;
+
+    li {
+        float: left;
+        width: 25%;
+    }
+
+    span {
+        margin-right: 5px;
+    }
+
+    span:before {
+        content: '';
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        margin-right: 5px;
+    }
+
+    .key-conservative span:before {
+        background-color: $color-conservative;
+    }
+
+    .key-labour span:before {
+        background-color: $color-labour;
+    }
+
+    .key-lib_dem span:before {
+        background-color: $color-lib-dem;
+    }
+
+    .key-ukip span:before {
+        background-color: $color-ukip;
+    }
+
+    .key-green span:before {
+        background-color: $color-green;
+    }
+
+    .key-snp span:before {
+        background-color: $color-snp;
+    }
+
+    .key-pc span:before {
+        background-color: $color-pc;
+    }
+
+    .key-tie span:before {
+        background-color: $color-tie;
+    }
+}
+
+.map-key-party-percentages {
+    float: left;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 10px 0 0 0;
+    width: 70%;
+
+    li {
+        float: left;
+        margin: 0;
+        padding: 0;
+        width: 15%;
+        text-align: right;
+        transition: 0.5s background-color;
+
+        span {
+            right: -1.5em;
+            top: 1.5em;
+            position: relative;
+            opacity: 1;
+        }
+    }
+}
+
+@include respondMinMax(768px, false)  {
+    .map-key {
+        height: $key-tablet-height;
+
+        .constituancy-selected & {
+            display: block;
+        }
+    }
+
+    .key-squares {
+        padding-top: 18px;
+        padding-left: 10px;
+        font-size: 16px;
+
+        li {
+            width: auto;
+            margin-right: 17px;
+        }
+    }
+
+    .map-key {
+        .select {
+            float: left;
+            width: 10%;
+            height: 32px;
+            line-height: 32px;
+
+            &:after {
+                margin-top: 11px;
+            }
+        }
+
+        .select-value {
+            width: 30%;
+        }
+    }
+}

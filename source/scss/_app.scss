@@ -1,0 +1,217 @@
+$color-constituency: #dbdcdb;
+$color-conservative: rgb(5, 117, 201);
+$color-labour: rgb(237, 30, 14);
+$color-lib-dem: rgb(254, 131, 0);
+$color-ukip: rgb(113, 47, 135);
+$color-snp: #ebc31c;
+$color-green: rgb(120, 195, 30);
+$color-pc: rgb(78, 159, 47);
+$color-tie: rgb(153, 153, 153);
+$color-other: $color-tie;
+$color-link: #404040;
+$color-map-bg: #bacbdc;
+$color-from-bg: #e3e3e3;
+$color-from-text: $color-link;
+$color-from-selected-bg: #007f7f;
+$color-from-selected-text: #FFF;
+$color-controls-bg: rgba(0,0,0,0.75);
+$color-controls-hover-bg: #000;
+$color-controls-hover: #d16f0e;
+
+$breakpoint-tablet: "only screen and (min-device-width : 768px)";
+
+$header-mobile-height: 108px;
+$header-tablet-height: 62px;
+$key-mobile-height: 52px;
+$key-tablet-height: 52px;
+
+$party-classes: (lab: $color-labour, con: $color-conservative, lib_dem: $color-lib-dem, ukip: $color-ukip, tie: $color-tie, pc: $color-pc, snp: $color-snp, green: $color-green, other: $color-other);
+
+
+/* separate your sass into different files to keep it maintainable!  */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a {
+    color: $color-link;
+    text-decoration: none;
+}
+
+.is-hidden {
+    display: none;
+}
+
+.phantom * {
+    transition-duration: 0s !important;
+}
+
+.main {
+    position: relative;
+    height: 460px;
+    overflow: hidden;
+}
+
+@include respondMinMax(321px, false) {
+    .main {
+        height: 305px;
+    }
+}
+
+@include respondMinMax(344px, 359px) {
+    .main {
+        height: 600px;
+    }
+}
+
+@include respondMinMax(368px, false) {
+    .main {
+        height: 600px;
+    }
+}
+
+@include respondMinMax(359px, 367px) {
+    .main {
+        height: 640px;
+    }
+}
+
+@include respondMinMax(464px, 552px) {
+    .main {
+        height: 300px;
+    }
+}
+
+@include respondMinMax(553px, 651px) {
+    .main {
+        height: 350px;
+    }
+}
+
+.main img {
+    width: 100%;
+}
+
+.labour,
+.lab {
+    fill: $color-labour;
+    background-color: $color-labour;
+}
+
+.conservative,
+.con {
+    fill: $color-conservative;
+    background-color: $color-conservative;
+}
+
+.lib_dem,
+.lib_dem {
+    fill: $color-lib-dem;
+    background-color: $color-lib-dem;
+}
+
+.ukip {
+    fill: $color-ukip;
+    background-color: $color-ukip;
+}
+
+.snp {
+    fill: $color-snp;
+    background-color: $color-snp;
+}
+
+.tie {
+    fill: $color-tie;
+    background-color: $color-tie;
+}
+
+.green {
+    fill: $color-green;
+    background-color: $color-green;
+}
+
+.tie {
+    fill: $color-tie;
+    background-color: $color-tie;
+}
+
+.pc {
+    fill: $color-pc;
+    background-color: $color-pc;
+}
+
+.other {
+    fill: $color-other;
+    background-color: $color-other;
+}
+
+.no-data {
+    fill: white;
+}
+
+
+$percents: 10, 20, 30, 40, 50, 60;
+@each $party, $color in $party-classes {
+    @each $i in $percents {
+        .#{$party}.per-#{$i} {
+            background-color: lighten($color, 60 - $i);
+            fill: lighten($color, 60 - $i);
+        }
+    }
+}
+.select {
+    margin: 12px 0;
+    position: relative;
+    padding-left: 10px;
+    height: 30px;
+    background: #f2f2f2;
+    line-height: 30px;
+
+    select {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        -webkit-appearance: none;
+    }
+
+    &:after {
+        content: '';
+        float: right;
+        width: 0;
+        margin: 12px 15px 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #404040;
+    }
+}
+
+.select-value {
+    float: left;
+    height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@include respondMinMax(768px, false)  {
+    .select {
+        margin: 10px;
+        height: 40px;
+        line-height: 39px;
+    }
+
+    .select:after {
+        margin-top: 15px;
+        border-width: 10px;
+    }
+}

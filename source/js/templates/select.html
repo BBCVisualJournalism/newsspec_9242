@@ -1,0 +1,20 @@
+<select>
+  <option value=""><%= emptyOption %></option>
+  <% if (hasGroups) { %>
+  <% _.forEach(data, function (o) { %>
+    <optgroup label="<%= o.optgroup %>">
+    <% _.forEach(o.options, function (o) { %>
+    <option value="<%= o.value %>"><%= o.text %></option>
+    <% }); %>
+  </optgroup>
+  <% }); %>
+  <% } else { %>
+  <% _.forEach(data, function (o) { %>
+  <% if (data.optgroup) {%>
+  <optgroup label="<%= data.optgroup %>">
+  <% } %>
+  <option value="<%= o.value %>"><%= o.text %></option>
+  <% }); %>
+  <% } %>
+</select>
+<div class="select-value"></div>
