@@ -41,6 +41,9 @@ for (var id in results.haveResults) {
     }
 }
 
+urls.push('country-scotland/from-polling');
+urls.push('country-scotland/from-2010');
+
 module.exports = function (grunt) {
     grunt.registerTask('screen-shots', 'Captures images of various states of the application', function () {
         var done = this.async();
