@@ -17,3 +17,4 @@ source/js/lib/vendors/topojson
 
 source/js/data/results/*
 !source/js/data/results/.gitkeep
+source/img/screens
