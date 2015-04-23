@@ -21,6 +21,7 @@ define(
         Map.prototype = {
             getImagePath: function () {
                 var route =  router.buildURL({
+                    country: this.appModel.get('country'),
                     from: this.appModel.get('currentFrom'),
                     constituancy: this.appModel.get('constituancy'),
                     party: this.appModel.get('party')
@@ -73,6 +74,10 @@ define(
             zoomIn: _.noop(),
             zoomOut: _.noop(),
             pan: _.noop(),
+
+            centerAroundRegion: function () {
+                this.loadImage();
+            },
 
             reset: function () {
                 news.pubsub.emit('map:reset');

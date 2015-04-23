@@ -11,7 +11,9 @@ define(
                 'constituancy-:constituancy(/from-:from)': 'constituancy',
 
                 'party-:party(/from-:from)': 'party',
-                'party-:party(/constituancy-:constituancy)(/from-:from)': 'partyConstituancy'
+                'party-:party(/constituancy-:constituancy)(/from-:from)': 'partyConstituancy',
+
+                'country-:country(/constituancy-:constituancy)(/from-:from)': 'country'
             }
         });
 
@@ -25,8 +27,13 @@ define(
                 var party = opts.party;
                 var constituancy = opts.constituancy;
                 var from = opts.from;
+                var country = opts.country;
 
                 var path = '';
+
+                if (country) {
+                    path += 'country-' + country + '/';
+                }
 
                 if (party) {
                     path += 'party-' + party + '/';

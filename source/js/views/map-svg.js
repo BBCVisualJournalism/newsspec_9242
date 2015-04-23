@@ -8,6 +8,10 @@ define(
     ],
 
     function (news, _, data, d3, topojson) {
+        var regionPaths = {
+            scotland: ['#S14000009', '#S14000005', '#S14000013' , '#S14000007']
+        };
+
         function Map (options) {
             this.options = options;
             this.el = this.options.el;
@@ -315,6 +319,46 @@ define(
 
             updateTooltip: function (d) {
                 this.hoverTooltip.html(this.model.get(d.properties.constituency_gssid).bbc_full_name);
+            },
+
+            centerAroundRegion: function (region) {
+                var paths = regionPaths[region];
+
+                var bounds = {
+                    x1: 1000000,
+                    y1: 1000000,
+                    x2: 0,
+                    y2: 0
+                };
+                var offset = this.getOffset();
+
+                paths.forEach(function(pathSel) {
+                    var path = this.svg.select('path' + pathSel);
+                    var d = path.datum();
+                    var b = this.path.bounds(d);
+
+                    if (b[0][0] < bounds.x1) bounds.x1 = b[0][0];
+                    if (b[0][1] < bounds.y1) bounds.y1 = b[0][1];
+
+                    if (b[1][0] > bounds.x2) bounds.x2 = b[1][0];
+                    if (b[1][1] > bounds.y2) bounds.y2 = b[1][1];
+                }.bind(this));
+
+                var centroid = [bounds.x1 + ((bounds.x2 - bounds.x1) / 2), bounds.y1 + ((bounds.y2 - bounds.y1) / 2)];
+
+                var xDiff =  bounds.x2 - bounds.x1;
+                var yDiff =  bounds.y2 - bounds.y1;
+
+
+                var scaleDiff = (xDiff > yDiff)? (this.width * 1 / xDiff) : (this.height * 1 / yDiff);
+
+                this.scale = scaleDiff;
+
+                this.translate.x = (((this.width / 2) - (offset.x) * 0.5) - (centroid[0] * this.scale));
+
+                this.translate.y = (((this.height / 2) - (offset.y) * 0.5) - (centroid[1] * this.scale));
+
+                return this._updateTransform();
             }
         };
 

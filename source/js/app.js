@@ -39,10 +39,12 @@ define(
             var constituancy = appModel.get('constituancy');
             var from = appModel.get('currentFrom');
             var party = appModel.get('party');
+            var country = appModel.get('country');
 
             var url = router.buildURL({
                 from: from,
                 party: party,
+                country: country,
                 constituancy: constituancy
             });
 
@@ -137,6 +139,19 @@ define(
                 constituancy: constituancy,
                 currentFrom: from || 'polling',
                 party: party
+            });
+        });
+
+        news.pubsub.on('routed:country', function (country, constituancy, from) {
+            if (!mapView.model || !(mapView.model instanceof ConstituencyModel)) {
+                var model = new ConstituencyModel(data.data);
+                mapView.setModel(model);
+            }
+
+            appModel.set({
+                constituancy: constituancy,
+                from: from || 'polling',
+                country: country
             });
         });
 

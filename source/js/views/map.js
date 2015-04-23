@@ -46,6 +46,10 @@ define(
                         this.map.reset();
                     }
                 }, this));
+
+                this.appModel.on('change:country', _.bind(function (model, country) {
+                    this.setCountry(country);
+                }, this));
             },
 
             resize: function () {
@@ -60,8 +64,18 @@ define(
                 }, this), 200);
             },
 
+            setCountry: function (country) {
+                this.map.centerAroundRegion(country);
+            },
+
             reset: function () {
                 this.map.reset();
+
+                var country = this.appModel.get('country');
+
+                if (country) {
+                    this.setCountry(country);
+                }
             },
 
             zoomIn: function () {
