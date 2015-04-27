@@ -206,7 +206,7 @@
 
         getQueryStringValue: function (name) {
             var queryString = '<!--#echo var="QUERY_STRING" -->',
-                regex       = new RegExp('(?:[\\?&]|&amp;)' + name + '=([^&#]*)'),
+                regex       = new RegExp('(?:[\\?&]|&amp;)?' + name + '=([^&#]*)'),
                 results     = regex.exec(queryString);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         },
