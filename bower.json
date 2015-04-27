@@ -1,0 +1,24 @@
+{
+  "name": "newsspec_9242",
+  "version": "0.0.0",
+  "homepage": "https://github.com/BBCVisualJournalism/newsspec_9242",
+  "authors": [
+    "Mark Gerrard <mark.gerrard.ext@bbc.co.uk>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "source/js/lib/vendors/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "3.5.4",
+    "topojson": "1.6.18",
+    "underscore": "1.7.0",
+    "backbone": "1.1.2"
+  }
+}

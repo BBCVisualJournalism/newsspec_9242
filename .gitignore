@@ -8,8 +8,6 @@ content
 english
 npm-debug.log
 
-bower.json
-.bower.json
 source/js/lib/vendors/d3
 source/js/lib/vendors/underscore
 source/js/lib/vendors/backbone
