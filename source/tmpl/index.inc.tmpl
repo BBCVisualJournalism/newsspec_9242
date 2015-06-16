@@ -14,6 +14,5 @@ if (!scaffoldLite) {
 }
 %>
 <script type="text/javascript">
-    document.body.className+= ' full-width-mode';
     <%= include(debug === 'true' ? "../js/lib/news_special/iframemanager__host.js" : "../../tmp/iframemanager__host.js", {iframeUid: iframeUid, scaffoldLite: scaffoldLite}) %>
 </script>
